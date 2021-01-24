@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Formulaire Tableaux</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Ajouter un tableau</h1><!--  -->
+        <form th:object="${tableau}" method="POST" th:action="@{save}">
+            <div class=""column">
+                <label for "titre"> Titre :</label>
+                <input type="text" th:field="*{titre}" placeholder="Titre du tableau"/>
+            </div>
+            <div class="column">
+                <label for="support">Support :</label>
+                <input type="text" th:fiels="*{support}" placeholder="Support du tableau"/>
+            </div>
+            <div class="column">
+                <label for="dimension">Dimension :</label>
+                <input type="text" th:fiels="*{dimension}" placeholder="Dimension du tableau"/>
+                </hr><!-- comment -->
+                <input type="submit" value="Enregistrer"/> <input type="reset" value="Réinitialiser"/>
+            </div>
+            <div class="column">
+                <label for="auteur">Auteur :</label>
+                    <select name="auteur" id="auteurs">
+                        <option th:value="${a.id}" th:each"a:${artistes}">[[${a.nom}]]</option><!-- comment -->
+                        <option th:value="null">Auteur inconnu</option><!-- comment -->
+                    </select><!-- comment -->
+            </div>
+        </form>
+        <hr/><!-- comment -->
+        <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+    </body>
+</html>
