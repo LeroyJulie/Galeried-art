@@ -10,26 +10,62 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
+import java.io.Serializable;
+import javax.persistence.*;
+
+
 
 /**
  *
  * @author Julie LEROY
  */
-@Getter @Setter @NoArgsConstructor @ToSting(callSuper = true) @Entity
-public class Artiste extends Personne {
+@Entity
+public class Artiste extends galerie.entity.Personne {
     
-    @Column(unique=true
-    @NotNull)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private Long id;
+   @Column(name = "id", nullable = false, updatable = false)
     private String biographie;
+    private String nom;
     
-    @OneToMany(rappedBy = "artiste")
+    public Artiste (){}
+    
+    @Id
+    public Long getId() {
+        return id;
+    }
+     
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getBiographie() {
+        return biographie;
+    }
+     
+    public void setBiographie(String Biographie) {
+        this.biographie = biographie;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+     
+    public void setNom(String Nom) {
+        this.nom = nom;
+    }
+    
+    @OneToMany(mappedBy = "artiste")
     private List<Tableau> tableaux;
     
-    public Artiste(String nom, String adresse, String biographie){ 
-        super(nom,adresse);
+    public Artiste(String nom, String biographie){ 
+        this.nom = nom;
         this.biographie = biographie;
         this.tableaux = new ArrayList<>();
 }

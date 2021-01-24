@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package galerie.dao;
+import galerie.entity.Artiste;
+
 
 /**
  *
  * @author Julie LEROY
  */
 public interface PersonneRepository {
+    //public void save (Artiste artiste){
+   // };
+    }
     
-}

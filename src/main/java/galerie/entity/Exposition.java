@@ -29,4 +29,17 @@ public class Exposition {
     @Column(unique=true)
     @NonNull
     private Integer duree;
+    
+@Entity 
+public class Exposition {
+    // ...
+    @ManyToMany
+    @JoinTable(name="expo_tableau",
+        joinColumns = 
+                @JoinColumn(name = "exposition_id", referencedColumnName="id"),
+        inverseJoinColumns = 
+                @JoinColumn(name = "tableau_id",  referencedColumnName="id")
+    )            
+    List<Tableau> oeuvres = new LinkedList<>();
+}
 }

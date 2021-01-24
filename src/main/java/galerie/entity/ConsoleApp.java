@@ -8,13 +8,13 @@ package galerie.entity;
 import galerie.dao.ArtisteRepository;
 import galerie.dao.PersonneRepository;
 import galerie.entity.Artiste;
-import org.springframwork.beans.factory.annotation.Autowired;
-import org.springframwork.boot.CommandLineRunner;
-import org.springframwork.stereotype.Conponent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Conponent;
 
 
 @Conponent
-public class ConsoleApp inplements CommandLineRunner{
+public class ConsoleApp implements CommandLineRunner {
     
     @Autowired
     private ArtisteRepository artisteRepository;
@@ -22,16 +22,16 @@ public class ConsoleApp inplements CommandLineRunner{
     private PersonneRepository personneRepository;
     
     @Override
-    public void run(String... args) throws Exeption {
+    public void run(String... args) throws Exception {
         tapezEntrerPourContinuer();
         //On crée des entités dans les sous-classes de "Item"
-        Artiste artiste = new Artiste(nom= "Dupont", adresse: "10 rue je sais pas quoi", biographie: "biographie1");
+        Artiste artiste = new Artiste("Dupont", "10 rue je sais pas quoi", "biographie1");
         // On les enregistre dans la base
-        personneRepository.save(artiste);
+        //personneRepository.save(artiste);
         //On les retrouve dans les personnes
-        personneRepository.findAll().forEach(System.out.println);
+        //personneRepository.findAll().forEach(System.out.println);
     }
-public static void tapezEntrerPourContinuer() throws Exeptino {
+public static void tapezEntrerPourContinuer() throws Exception {
     System.out.println("Tapez ENTRER pour continuer...");
     System.in.read();
     }

@@ -28,4 +28,11 @@ public class Tableau {
     
     @Column (unique = true)
     private  String titre;
+    
+    @Entity 
+public class Tableau {
+    // ...
+    @OneToOne(mappedBy = "oeuvre")
+    private Transaction vendu;    
+}
 }
